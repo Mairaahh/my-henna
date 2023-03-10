@@ -7,24 +7,26 @@
     </ion-header>
 
     <ion-content>
-      <ion-list>
-        <ion-item [routerLink]="['/view-post']">
-          <ion-icon name="person" slot="start"></ion-icon>
-          <ion-label>Me</ion-label>
-        </ion-item>
-        <ion-item [routerLink]="['/designdetails']">
-          <ion-icon name="rose" slot="start"></ion-icon>
-          <ion-label>Design & Details</ion-label>
-        </ion-item>
-        <ion-item [routerLink]="['/preparation']">
-          <ion-icon name="book" slot="start"></ion-icon>
-          <ion-label>Preparation</ion-label>
-        </ion-item>
-        <ion-item [routerLink]="['/aboutus']">
-          <ion-icon name="information-circle" slot="start"></ion-icon>
-          <ion-label>About Us</ion-label>
-        </ion-item>
-      </ion-list>
+      <ion-menu-toggle>
+        <ion-list>
+          <ion-item [routerLink]="['/view-post']">
+            <ion-icon name="person" slot="start"></ion-icon>
+            <ion-label>Me</ion-label>
+          </ion-item>
+          <ion-item [routerLink]="['/designdetails']">
+            <ion-icon name="rose" slot="start"></ion-icon>
+            <ion-label>Design & Details</ion-label>
+          </ion-item>
+          <ion-item [routerLink]="['/preparation']">
+            <ion-icon name="book" slot="start"></ion-icon>
+            <ion-label>Preparation</ion-label>
+          </ion-item>
+          <ion-item [routerLink]="['/aboutus']">
+            <ion-icon name="information-circle" slot="start"></ion-icon>
+            <ion-label>About Us</ion-label>
+          </ion-item>
+        </ion-list>
+      </ion-menu-toggle>
     </ion-content>
   </ion-menu>
   <ion-router-outlet id="main"></ion-router-outlet>

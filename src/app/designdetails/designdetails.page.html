@@ -1,7 +1,12 @@
 <ion-header>
   <ion-toolbar color="medium" class="ion-text-center">
-    <ion-title> Design & Details </ion-title>
     <ion-menu-button color="dark" menu="main-menu" slot="start"></ion-menu-button>
+    <ion-title> Design & Details </ion-title>
+    <ion-buttons slot="end">
+      <ion-button [routerLink]="['/cart']">
+        <ion-icon name="cart-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
@@ -19,25 +24,39 @@
       <ion-card-title>Red Henna</ion-card-title>
       <ion-card-subtitle>Budget Package RM180</ion-card-subtitle>
     </ion-card-header>
-  
+
     <ion-card-content>
       - Simple design <br>
-      - Full stamp on fingertips and toes <br><ion-button color="dark" shape="round" style="float: right;" size="small" fill="outline"><ion-icon name="add-outline"></ion-icon></ion-button>
+      - Full stamp on fingertips and toes <br>
+      <p style="float: right;">
+        <ion-chip (click)="decrementQuantity(0)"><ion-icon style="margin-inline: unset;"
+            name="remove-outline"></ion-icon></ion-chip>
+        <ion-chip>{{ quantityService.itemQuantities[0] }}</ion-chip>
+        <ion-chip (click)="incrementQuantity(0)"><ion-icon style="margin-inline: unset;"
+            name="add-outline"></ion-icon></ion-chip>
+      </p>
     </ion-card-content>
     <br><br>
   </ion-card>
-  
+
   <ion-card>
     <img src="assets/7.png" />
     <ion-card-header>
       <ion-card-title>White Henna</ion-card-title>
       <ion-card-subtitle>Budget Package RM180</ion-card-subtitle>
     </ion-card-header>
-  
+
     <ion-card-content>
       - Simple design <br>
       - Waterproof <br>
-      - Glitter + diamonds <br><ion-button color="dark" shape="round" style="float: right;" size="small" fill="outline"><ion-icon name="add-outline"></ion-icon></ion-button>
+      - Glitter + diamonds <br>
+      <p style="float: right;">
+        <ion-chip (click)="decrementQuantity(1)"><ion-icon style="margin-inline: unset;"
+            name="remove-outline"></ion-icon></ion-chip>
+        <ion-chip>{{ quantityService.itemQuantities[1] }}</ion-chip>
+        <ion-chip (click)="incrementQuantity(1)"><ion-icon style="margin-inline: unset;"
+            name="add-outline"></ion-icon></ion-chip>
+      </p>
     </ion-card-content>
     <br><br>
   </ion-card>
@@ -48,10 +67,17 @@
       <ion-card-title>Red Henna</ion-card-title>
       <ion-card-subtitle>Silver Package RM220</ion-card-subtitle>
     </ion-card-header>
-  
+
     <ion-card-content>
       - Semi-crowded design <br>
-      - Full stamp on fingertips and toes <br><ion-button color="dark" shape="round" style="float: right;" size="small" fill="outline"><ion-icon name="add-outline"></ion-icon></ion-button>
+      - Full stamp on fingertips and toes <br>
+      <p style="float: right;">
+        <ion-chip (click)="decrementQuantity(2)"><ion-icon style="margin-inline: unset;"
+            name="remove-outline"></ion-icon></ion-chip>
+        <ion-chip>{{ quantityService.itemQuantities[2] }}</ion-chip>
+        <ion-chip (click)="incrementQuantity(2)"><ion-icon style="margin-inline: unset;"
+            name="add-outline"></ion-icon></ion-chip>
+      </p>
     </ion-card-content>
     <br><br>
   </ion-card>
@@ -62,11 +88,18 @@
       <ion-card-title>White Henna</ion-card-title>
       <ion-card-subtitle>Intermediate Package RM220</ion-card-subtitle>
     </ion-card-header>
-  
+
     <ion-card-content>
       - Half-full design <br>
       - Waterproof <br>
-      - Glitter + diamonds <br><ion-button color="dark" shape="round" style="float: right;" size="small" fill="outline"><ion-icon name="add-outline"></ion-icon></ion-button>
+      - Glitter + diamonds <br>
+      <p style="float: right;">
+        <ion-chip (click)="decrementQuantity(3)"><ion-icon style="margin-inline: unset;"
+            name="remove-outline"></ion-icon></ion-chip>
+        <ion-chip>{{ quantityService.itemQuantities[3] }}</ion-chip>
+        <ion-chip (click)="incrementQuantity(3)"><ion-icon style="margin-inline: unset;"
+            name="add-outline"></ion-icon></ion-chip>
+      </p>
     </ion-card-content>
     <br><br>
   </ion-card>
@@ -77,10 +110,17 @@
       <ion-card-title>Red Henna</ion-card-title>
       <ion-card-subtitle>Gold Package RM250++</ion-card-subtitle>
     </ion-card-header>
-  
+
     <ion-card-content>
       - Crowded design <br>
-      - Full stamp on fingertips and toes <br><ion-button color="dark" shape="round" style="float: right;" size="small" fill="outline"><ion-icon name="add-outline"></ion-icon></ion-button>
+      - Full stamp on fingertips and toes <br>
+      <p style="float: right;">
+        <ion-chip (click)="decrementQuantity(4)"><ion-icon style="margin-inline: unset;"
+            name="remove-outline"></ion-icon></ion-chip>
+        <ion-chip>{{ quantityService.itemQuantities[4] }}</ion-chip>
+        <ion-chip (click)="incrementQuantity(4)"><ion-icon style="margin-inline: unset;"
+            name="add-outline"></ion-icon></ion-chip>
+      </p>
     </ion-card-content>
     <br><br>
   </ion-card>
@@ -91,28 +131,21 @@
       <ion-card-title>White Henna</ion-card-title>
       <ion-card-subtitle>Crowded Package RM300</ion-card-subtitle>
     </ion-card-header>
-  
+
     <ion-card-content>
       - Crowded design <br>
       - Waterproof <br>
-      - Glitter + diamonds <br><ion-button color="dark" shape="round" style="float: right;" size="small" fill="outline"><ion-icon name="add-outline"></ion-icon></ion-button>
+      - Glitter + diamonds <br>
+      <p style="float: right;">
+        <ion-chip (click)="decrementQuantity(5)"><ion-icon style="margin-inline: unset;"
+            name="remove-outline"></ion-icon></ion-chip>
+        <ion-chip>{{ quantityService.itemQuantities[5] }}</ion-chip>
+        <ion-chip (click)="incrementQuantity(5)"><ion-icon style="margin-inline: unset;"
+            name="add-outline"></ion-icon></ion-chip>
+      </p>
     </ion-card-content>
     <br><br>
   </ion-card>
-
-  <ion-card>
-    <img src="assets/13.jpg" />
-    <ion-card-header>
-      <ion-card-title>Red Henna</ion-card-title>
-      <ion-card-subtitle>Hand Package ONLY</ion-card-subtitle>
-    </ion-card-header>
-  
-    <ion-card-content>
-      - Starting price RM100 (By design) <br>
-      - Simple to crowded <br>
-      - Full stamp on fingertips and toes <br><ion-button color="dark" shape="round" style="float: right;" size="small" fill="outline"><ion-icon name="add-outline"></ion-icon></ion-button>
-    </ion-card-content>
-    <br><br>
-  </ion-card>
+  <br><br><br><br>
 
 </ion-content>

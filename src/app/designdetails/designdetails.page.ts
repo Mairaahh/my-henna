@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { QuantityService } from '../services/quantity.service';
 
 @Component({
   selector: 'app-designdetails',
@@ -7,9 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DesigndetailsPage implements OnInit {
 
-  constructor() { }
+  constructor(public quantityService: QuantityService) { }
 
   ngOnInit() {
+  }
+
+  incrementQuantity(index: number) {
+    this.quantityService.incrementQuantity(index);
+  }
+  
+  decrementQuantity(index: number) {
+    this.quantityService.decrementQuantity(index);
   }
 
 }
