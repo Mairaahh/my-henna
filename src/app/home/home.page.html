@@ -1,0 +1,21 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title size="large">My Henna</ion-title>
+    <ion-buttons slot="start">
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">My Henna</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <div id="container">
+    <ion-button fill="clear" color="default" [routerLink]="['/login']">Login</ion-button>
+    <p>Or</p>
+    <ion-button fill="clear" color="default" [routerLink]="['/register']">Register</ion-button>
+  </div>
+</ion-content>

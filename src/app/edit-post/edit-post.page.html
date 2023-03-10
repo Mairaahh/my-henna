@@ -1,0 +1,42 @@
+<ion-header>
+  <ion-toolbar color="medium" class="ion-text-center">
+
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="ion-padding">
+    <ion-text color="danger">
+      <p>Update information</p>
+    </ion-text>
+
+    <ion-item>
+      <ion-label position="floating">Name</ion-label>
+      <ion-input type="text" [(ngModel)]="post.name" required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">E-mail</ion-label>
+      <ion-input type="email" [(ngModel)]="post.email" placeholder="your@gmail.com" required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Message</ion-label>
+      <ion-textarea [(ngModel)]="post.message" placeholder="type your Message"></ion-textarea>
+    </ion-item>
+
+    <ion-button expand="block" color="kuptm" (click)="updatePost(post)">
+      <ion-icon slot="start" name="send"></ion-icon>
+    </ion-button>
+
+  </div>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar class="ion-text-center" color="kuptm">
+    <ion-title>Copyright</ion-title>
+  </ion-toolbar>
+</ion-footer>
