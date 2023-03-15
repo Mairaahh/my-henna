@@ -30,6 +30,7 @@ export class LoginPage implements OnInit {
       (await loader).present();
 
       try {
+        localStorage.setItem('useremail', user.email);
         await this.afAuth
           .signInWithEmailAndPassword(user.email, user.password)
           .then(data => {

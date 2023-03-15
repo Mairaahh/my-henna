@@ -66,13 +66,24 @@
 
   <ion-card>
     <ion-card-header>
+      <ion-card-title>Select your booking date</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      <ion-input placeholder="Date" (ionChange)="setDateBooking()" [(ngModel)]="datetimefield" type="datetime-local"></ion-input>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
       <ion-card-title>Total: RM {{(quantityService.itemQuantities[0] * 180) + (quantityService.itemQuantities[1] * 180)
         + (quantityService.itemQuantities[2] * 220) + (quantityService.itemQuantities[3] * 220) +
         (quantityService.itemQuantities[4] * 250) + (quantityService.itemQuantities[5] * 300)}}</ion-card-title>
     </ion-card-header>
 
     <ion-card-content>
-      <ion-button expand="block" color="medium"><ion-icon name="bag-check-outline"></ion-icon> &nbsp;&nbsp; Checkout</ion-button>
+      <ion-button expand="block" routerLink="/checkout" color="medium"><ion-icon name="bag-check-outline"></ion-icon> &nbsp;&nbsp;
+        Checkout</ion-button>
     </ion-card-content>
   </ion-card>
 </ion-content>

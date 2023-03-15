@@ -6,6 +6,7 @@ import { Injectable } from '@angular/core';
 export class QuantityService {
 
   itemQuantities: number[] = [0, 0, 0, 0, 0, 0];
+  datebooking: string = "";
 
   incrementQuantity(index: number) {
     this.itemQuantities[index]++;
@@ -15,6 +16,10 @@ export class QuantityService {
     if (this.itemQuantities[index] > 0) {
       this.itemQuantities[index]--;
     }
+  }
+
+  setDateBooking(dateparam: string) {
+    this.datebooking = dateparam;
   }
 
   constructor() { }

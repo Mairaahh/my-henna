@@ -5,16 +5,27 @@
 </ion-header>
 
 <ion-content>
-  
-  <h2>Please upload your online payment receipt! thankyou.</h2>
 
-  <h4>Show a file-select field which allows only one file to be chosen:</h4>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Please upload your online payment receipt! thankyou.</ion-card-title>
+    </ion-card-header>
+  </ion-card>
 
-<form action="/action_page.php">
-  <label for="myfile">Select a file:</label>
-  <input type="file" id="myfile" name="myfile"><br><br>
-  <input type="submit">
-</form>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Attach receipt here</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      <form action="/action_page.php">
+        <label for="myfile">Select a file:</label>
+        <input type="file" id="myfile" name="myfile"><br><br>
+        <input type="submit">
+      </form>
+    </ion-card-content>
+  </ion-card>
+
 
 
 </ion-content>
