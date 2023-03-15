@@ -16,22 +16,22 @@ export class ContactPage implements OnInit {
   constructor(
     private toastCtrl: ToastController,
     private loadingCtrl: LoadingController,
-    private navCtrl : NavController,
-    private firestore : AngularFirestore ) { }
+    private navCtrl: NavController,
+    private firestore: AngularFirestore) { }
 
-  ngOnInit() {}
+  ngOnInit() { }
 
-  async createPost(post: Post){
-    if(this.formValidation()){
+  async createPost(post: Post) {
+    if (this.formValidation()) {
       //show loader
-      let loader = this.loadingCtrl.create ({
+      let loader = this.loadingCtrl.create({
         message: "please wait..."
       });
       (await loader).present();
 
-      try{
+      try {
         await this.firestore.collection("contact").add(post);
-      } catch(e: any){
+      } catch (e: any) {
         this.showToast(e);
       }
       //dismiss loader
@@ -39,33 +39,33 @@ export class ContactPage implements OnInit {
 
       //redirect to home page
       this.navCtrl.navigateRoot("view-post");
-      }
     }
+  }
 
-    formValidation(){
-      if(!this.post.name){
-        this.showToast("Enter name");
-        return false;
-      }
-
-    if(!this.post.email){
-      this.showToast ("Enter email");
+  formValidation() {
+    if (!this.post.name) {
+      this.showToast("Enter name");
       return false;
     }
 
-    if(!this.post.message){
-      this.showToast ("Enter message");
+    if (!this.post.email) {
+      this.showToast("Enter email");
+      return false;
+    }
+
+    if (!this.post.message) {
+      this.showToast("Enter message");
       return false;
     }
 
     return true;
   }
 
-  showToast (message:string){
+  showToast(message: string) {
     this.toastCtrl.create({
       message: message,
       duration: 3000
     })
-    .then(toastData => toastData.present());
+      .then(toastData => toastData.present());
   }
 }

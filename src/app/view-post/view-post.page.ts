@@ -8,22 +8,22 @@ import { LoadingController, ToastController } from '@ionic/angular';
   styleUrls: ['./view-post.page.scss'],
 })
 export class ViewPostPage implements OnInit {
-  posts: any;
+  userProfile: any = {};
 
   constructor(
     private loadingCtrl: LoadingController,
-    private toastCtrl : ToastController,
-    private firestore : AngularFirestore
-    ) { }
+    private toastCtrl: ToastController,
+    private firestore: AngularFirestore
+  ) { }
 
   ngOnInit() {
   }
 
-  ionViewWillEnter(){
-    this.getPosts();
+  ionViewWillEnter() {
+    this.getUserProfile();
   }
 
-  async getPosts(){
+  async getUserProfile() {
     //show loader
     let loader = await this.loadingCtrl.create({
       message: "Please wait..."
@@ -31,41 +31,33 @@ export class ViewPostPage implements OnInit {
     loader.present();
 
     try {
+      const useremaillocalstore = localStorage.getItem('useremail');
       this.firestore
-      .collection("contact")
-      .snapshotChanges()
-      .subscribe((data: any) => {
-        this.posts = data.map((e: any) => {
-          return {
-            id: e.payload.doc.id,
-            name: e.payload.doc.data()["name"],
-            email: e.payload.doc.data()["email"],
-            message: e.payload.doc.data()["message"]
-          };
+        .collection("userdetails", (ref) => ref.where("email", "==", useremaillocalstore))
+        .snapshotChanges()
+        .subscribe((data: any) => {
+          if (data.length > 0) {
+            const e = data[0];
+            this.userProfile = {
+              id: e.payload.doc.id,
+              fullname: e.payload.doc.data()["fullname"],
+              email: e.payload.doc.data()["email"],
+              address: e.payload.doc.data()["address"],
+              phoneno: e.payload.doc.data()["phoneno"],
+            };
+          } else {
+            this.userProfile = null; // No matching document found
+          }
+
+          loader.dismiss();
         });
 
-        loader.dismiss();
-      });
-
-    }catch (e: any){
+    } catch (e: any) {
       this.showToast(e);
     }
   }
 
-  async deletePost (id:string){
-    //show loader
-    let loader = this.loadingCtrl.create({
-      message: "Please wait..."
-    });
-    (await loader).present();
-
-    await this.firestore.doc("contact/" + id).delete();
-
-    //dismiss loader
-    (await loader).dismiss();
-  }
-
-  showToast (message:string){
+  showToast(message: string) {
     this.toastCtrl.create({
       message: message,
       duration: 3000
