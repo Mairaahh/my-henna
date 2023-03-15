@@ -8,9 +8,15 @@ import { QuantityService } from '../services/quantity.service';
 })
 export class CartPage implements OnInit {
 
+  public datetimefield: string = '';
+
   constructor(public quantityService: QuantityService) { }
 
   ngOnInit() {
+  }
+
+  setDateBooking() {
+    this.quantityService.setDateBooking(this.datetimefield);
   }
 
 }
