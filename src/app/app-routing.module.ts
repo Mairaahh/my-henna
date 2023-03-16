@@ -59,6 +59,22 @@ const routes: Routes = [
     path: 'gallery',
     loadChildren: () => import('./gallery/gallery.module').then( m => m.GalleryPageModule)
   },
+  {
+    path: 'loginadmin',
+    loadChildren: () => import('./loginadmin/loginadmin.module').then( m => m.LoginadminPageModule)
+  },
+  {
+    path: 'registeradmin',
+    loadChildren: () => import('./registeradmin/registeradmin.module').then( m => m.RegisteradminPageModule)
+  },
+  {
+    path: 'admin',
+    loadChildren: () => import('./admin/admin.module').then( m => m.AdminPageModule)
+  },
+  {
+    path: 'user',
+    loadChildren: () => import('./user/user.module').then( m => m.UserPageModule)
+  },
 ];
 
 @NgModule({
