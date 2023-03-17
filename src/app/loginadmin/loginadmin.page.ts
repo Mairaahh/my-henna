@@ -6,7 +6,7 @@ import { User } from 'src/models/user.mode';
 @Component({
   selector: 'app-loginadmin',
   templateUrl: './loginadmin.page.html',
-  styleUrls: ['./login.page.scss'],
+  styleUrls: ['./loginadmin.page.scss'],
 })
 export class LoginadminPage implements OnInit {
   user = {} as User;
@@ -36,7 +36,7 @@ export class LoginadminPage implements OnInit {
           .then(data => {
             console.log(data);
             //redirect to home page
-            this.navCtrl.navigateRoot("designdetails");
+            this.navCtrl.navigateRoot("homeadmin");
           })
       } catch (e: any) {
         this.showToast(e);
