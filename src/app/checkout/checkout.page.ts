@@ -20,8 +20,7 @@ export class CheckoutPage implements OnInit {
   setDateFormatted(formatteddatetime: string) {
     const date = new Date(formatteddatetime);
     const formattedDate = `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`;
-    const formattedTime = date.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true });
-    this.dateTimeFormatted = `${formattedDate} ${formattedTime}`;
+    this.dateTimeFormatted = `${formattedDate}`;
   }
 
   checkPcs(quantity: number) {

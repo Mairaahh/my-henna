@@ -82,13 +82,22 @@ const routes: Routes = [
   {
     path: 'orderdetailsadmin/:id',
     loadChildren: () => import('./orderdetailsadmin/orderdetailsadmin.module').then( m => m.OrderdetailsadminPageModule)
-  },  {
+  },
+  {
     path: 'orderacceptedadmin',
     loadChildren: () => import('./orderacceptedadmin/orderacceptedadmin.module').then( m => m.OrderacceptedadminPageModule)
   },
   {
     path: 'orderrejectedadmin',
     loadChildren: () => import('./orderrejectedadmin/orderrejectedadmin.module').then( m => m.OrderrejectedadminPageModule)
+  },
+  {
+    path: 'userorder',
+    loadChildren: () => import('./userorder/userorder.module').then( m => m.UserorderPageModule)
+  },
+  {
+    path: 'userorderdetails/:id',
+    loadChildren: () => import('./userorderdetails/userorderdetails.module').then( m => m.UserorderdetailsPageModule)
   },
 
 

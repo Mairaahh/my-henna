@@ -3,13 +3,13 @@
     <ion-buttons slot="start">
       <ion-back-button></ion-back-button>
     </ion-buttons>
-    <ion-title>My Cart</ion-title>
+    <ion-title>Order Details</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
   <ion-list>
-    <ion-item>
+    <ion-item *ngIf="checkPcs(quantityService.itemQuantities[0])">
       <ion-label>
         <h3>Red Henna</h3>
         <p>Budget Package RM180</p>
@@ -18,7 +18,7 @@
       <ion-chip>RM {{ quantityService.itemQuantities[0] * 180 }}</ion-chip>
     </ion-item>
 
-    <ion-item>
+    <ion-item *ngIf="checkPcs(quantityService.itemQuantities[1])">
       <ion-label>
         <h3>White Henna</h3>
         <p>Budget Package RM180</p>
@@ -27,7 +27,7 @@
       <ion-chip>RM {{ quantityService.itemQuantities[1] * 180 }}</ion-chip>
     </ion-item>
 
-    <ion-item>
+    <ion-item *ngIf="checkPcs(quantityService.itemQuantities[2])">
       <ion-label>
         <h3>Red Henna</h3>
         <p>Silver Package RM220</p>
@@ -36,7 +36,7 @@
       <ion-chip>RM {{ quantityService.itemQuantities[2] * 220 }}</ion-chip>
     </ion-item>
 
-    <ion-item>
+    <ion-item *ngIf="checkPcs(quantityService.itemQuantities[3])">
       <ion-label>
         <h3>White Henna</h3>
         <p>Intermediate Package RM220</p>
@@ -45,7 +45,7 @@
       <ion-chip>RM {{ quantityService.itemQuantities[3] * 220 }}</ion-chip>
     </ion-item>
 
-    <ion-item>
+    <ion-item *ngIf="checkPcs(quantityService.itemQuantities[4])">
       <ion-label>
         <h3>Red Henna</h3>
         <p>Gold Package RM250</p>
@@ -54,7 +54,7 @@
       <ion-chip>RM {{ quantityService.itemQuantities[4] * 250 }}</ion-chip>
     </ion-item>
 
-    <ion-item>
+    <ion-item *ngIf="checkPcs(quantityService.itemQuantities[5])">
       <ion-label>
         <h3>White Henna</h3>
         <p>Crowded Package RM300</p>
@@ -66,12 +66,8 @@
 
   <ion-card>
     <ion-card-header>
-      <ion-card-title>Select your booking date</ion-card-title>
+      <ion-card-title>Date: {{this.dateTimeFormatted}}</ion-card-title>
     </ion-card-header>
-
-    <ion-card-content>
-      <ion-input placeholder="Date" (ionChange)="setDateBooking()" [(ngModel)]="datetimefield" type="date"></ion-input>
-    </ion-card-content>
   </ion-card>
 
   <ion-card>
@@ -80,10 +76,20 @@
         + (quantityService.itemQuantities[2] * 220) + (quantityService.itemQuantities[3] * 220) +
         (quantityService.itemQuantities[4] * 250) + (quantityService.itemQuantities[5] * 300)}}</ion-card-title>
     </ion-card-header>
+  </ion-card>
 
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Uploaded Receipt Image</ion-card-title>
+    </ion-card-header>
     <ion-card-content>
-      <ion-button expand="block" routerLink="/checkout" color="medium"><ion-icon name="bag-check-outline"></ion-icon> &nbsp;&nbsp;
-        Checkout</ion-button>
+      <img [src]="imageUrl">
     </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Status: {{statusOrder}}</ion-card-title>
+    </ion-card-header>
   </ion-card>
 </ion-content>

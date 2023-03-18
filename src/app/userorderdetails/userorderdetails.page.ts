@@ -1,29 +1,29 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { ActivatedRoute } from '@angular/router';
-import { LoadingController, NavController, ToastController } from '@ionic/angular';
+import { LoadingController, ToastController } from '@ionic/angular';
 import { QuantityService } from '../services/quantity.service';
 import { AngularFireStorage } from '@angular/fire/compat/storage';
 
 @Component({
-  selector: 'app-orderdetailsadmin',
-  templateUrl: './orderdetailsadmin.page.html',
-  styleUrls: ['./orderdetailsadmin.page.scss'],
+  selector: 'app-userorderdetails',
+  templateUrl: './userorderdetails.page.html',
+  styleUrls: ['./userorderdetails.page.scss'],
 })
-export class OrderdetailsadminPage implements OnInit {
+export class UserorderdetailsPage implements OnInit {
   public dateTimeFormatted: string = "";
   order: any = {};
   id: any;
   imageUrl: string = null;
 
   dataOrder: any = {};
+  statusOrder: string = "";
 
   constructor(
     private actRoute: ActivatedRoute,
     private loadingCtrl: LoadingController,
     private firestore: AngularFirestore,
     private toastCtrl: ToastController,
-    private navCtrl: NavController,
     public quantityService: QuantityService,
     private storage: AngularFireStorage
   ) {
@@ -53,6 +53,14 @@ export class OrderdetailsadminPage implements OnInit {
         this.setDateFormatted(this.order.bookingdate);
         this.getReceiptImage(this.order.orderdateunique, this.order.useremail);
 
+        if (data["orderaccepted"] == 'success') {
+          this.statusOrder = "Accepted";
+        } else if (data["orderaccepted"] == 'rejected') {
+          this.statusOrder = "Rejected";
+        } else {
+          this.statusOrder = "Pending";
+        }
+
         //use for data update
         this.dataOrder = this.order;
       });
@@ -69,25 +77,6 @@ export class OrderdetailsadminPage implements OnInit {
     } catch (error) {
       console.error('Error fetching image:', error);
     }
-  }
-
-  async actionsOrder(action: string) {
-    //show loader
-    let loader = this.loadingCtrl.create({
-      message: "Updating..."
-    });
-    (await loader).present();
-
-    try {
-      this.dataOrder.orderaccepted = action;
-      await this.firestore.doc("orders/" + this.id).update(this.dataOrder);
-    } catch (e: any) {
-      this.showToast(e);
-    }
-    //dismiss loader
-    (await loader).dismiss();
-    //redirect
-    this.navCtrl.navigateRoot("homeadmin");
   }
 
   setDateFormatted(formatteddatetime: string) {

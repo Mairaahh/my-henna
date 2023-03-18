@@ -11,12 +11,17 @@ export class DesigndetailsPage implements OnInit {
   constructor(public quantityService: QuantityService) { }
 
   ngOnInit() {
+    this.quantityService.setItemQuantities([0, 0, 0, 0, 0, 0]);
+  }
+
+  ionViewWillEnter() {
+    this.quantityService.setItemQuantities([0, 0, 0, 0, 0, 0]);
   }
 
   incrementQuantity(index: number) {
     this.quantityService.incrementQuantity(index);
   }
-  
+
   decrementQuantity(index: number) {
     this.quantityService.decrementQuantity(index);
   }
