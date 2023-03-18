@@ -18,6 +18,10 @@ export class QuantityService {
     }
   }
 
+  setItemQuantities(dateparam: number[]) {
+    this.itemQuantities = dateparam;
+  }
+
   setDateBooking(dateparam: string) {
     this.datebooking = dateparam;
   }

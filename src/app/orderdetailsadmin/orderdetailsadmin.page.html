@@ -1,0 +1,98 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Customer orders</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item *ngIf="checkPcs(quantityService.itemQuantities[0])">
+      <ion-label>
+        <h3>Red Henna</h3>
+        <p>Budget Package RM180</p>
+      </ion-label>
+      <ion-chip>{{ quantityService.itemQuantities[0] }} Pcs</ion-chip>
+      <ion-chip>RM {{ quantityService.itemQuantities[0] * 180 }}</ion-chip>
+    </ion-item>
+
+    <ion-item *ngIf="checkPcs(quantityService.itemQuantities[1])">
+      <ion-label>
+        <h3>White Henna</h3>
+        <p>Budget Package RM180</p>
+      </ion-label>
+      <ion-chip>{{ quantityService.itemQuantities[1] }} Pcs</ion-chip>
+      <ion-chip>RM {{ quantityService.itemQuantities[1] * 180 }}</ion-chip>
+    </ion-item>
+
+    <ion-item *ngIf="checkPcs(quantityService.itemQuantities[2])">
+      <ion-label>
+        <h3>Red Henna</h3>
+        <p>Silver Package RM220</p>
+      </ion-label>
+      <ion-chip>{{ quantityService.itemQuantities[2] }} Pcs</ion-chip>
+      <ion-chip>RM {{ quantityService.itemQuantities[2] * 220 }}</ion-chip>
+    </ion-item>
+
+    <ion-item *ngIf="checkPcs(quantityService.itemQuantities[3])">
+      <ion-label>
+        <h3>White Henna</h3>
+        <p>Intermediate Package RM220</p>
+      </ion-label>
+      <ion-chip>{{ quantityService.itemQuantities[3] }} Pcs</ion-chip>
+      <ion-chip>RM {{ quantityService.itemQuantities[3] * 220 }}</ion-chip>
+    </ion-item>
+
+    <ion-item *ngIf="checkPcs(quantityService.itemQuantities[4])">
+      <ion-label>
+        <h3>Red Henna</h3>
+        <p>Gold Package RM250</p>
+      </ion-label>
+      <ion-chip>{{ quantityService.itemQuantities[4] }} Pcs</ion-chip>
+      <ion-chip>RM {{ quantityService.itemQuantities[4] * 250 }}</ion-chip>
+    </ion-item>
+
+    <ion-item *ngIf="checkPcs(quantityService.itemQuantities[5])">
+      <ion-label>
+        <h3>White Henna</h3>
+        <p>Crowded Package RM300</p>
+      </ion-label>
+      <ion-chip>{{ quantityService.itemQuantities[5] }} Pcs</ion-chip>
+      <ion-chip>RM {{ quantityService.itemQuantities[5] * 300 }}</ion-chip>
+    </ion-item>
+  </ion-list>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Date: {{this.dateTimeFormatted}}</ion-card-title>
+    </ion-card-header>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Total: RM {{(quantityService.itemQuantities[0] * 180) + (quantityService.itemQuantities[1] * 180)
+        + (quantityService.itemQuantities[2] * 220) + (quantityService.itemQuantities[3] * 220) +
+        (quantityService.itemQuantities[4] * 250) + (quantityService.itemQuantities[5] * 300)}}</ion-card-title>
+    </ion-card-header>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Uploaded Receipt Image</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <img [src]="imageUrl">
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Actions</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-button fill="clear" (click)="actionsOrder('success')">Accept order <ion-icon color="success" name="checkmark-outline"></ion-icon></ion-button><ion-button fill="clear" color="danger" (click)="actionsOrder('rejected')">Reject order <ion-icon color="danger" name="close-outline"></ion-icon></ion-button><ion-button fill="clear" color="secondary" (click)="actionsOrder('pending')">Make it pending</ion-button>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

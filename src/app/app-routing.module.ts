@@ -79,6 +79,19 @@ const routes: Routes = [
     path: 'homeadmin',
     loadChildren: () => import('./homeadmin/homeadmin.module').then( m => m.HomeadminPageModule)
   },
+  {
+    path: 'orderdetailsadmin/:id',
+    loadChildren: () => import('./orderdetailsadmin/orderdetailsadmin.module').then( m => m.OrderdetailsadminPageModule)
+  },  {
+    path: 'orderacceptedadmin',
+    loadChildren: () => import('./orderacceptedadmin/orderacceptedadmin.module').then( m => m.OrderacceptedadminPageModule)
+  },
+  {
+    path: 'orderrejectedadmin',
+    loadChildren: () => import('./orderrejectedadmin/orderrejectedadmin.module').then( m => m.OrderrejectedadminPageModule)
+  },
+
+
 ];
 
 @NgModule({

@@ -3,11 +3,11 @@ import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { LoadingController, ToastController } from '@ionic/angular';
 
 @Component({
-  selector: 'app-homeadmin',
-  templateUrl: './homeadmin.page.html',
-  styleUrls: ['./homeadmin.page.scss'],
+  selector: 'app-orderacceptedadmin',
+  templateUrl: './orderacceptedadmin.page.html',
+  styleUrls: ['./orderacceptedadmin.page.scss'],
 })
-export class HomeadminPage implements OnInit {
+export class OrderacceptedadminPage implements OnInit {
   orders: any;
 
   constructor(
@@ -41,13 +41,14 @@ export class HomeadminPage implements OnInit {
               orderaccepted: e.payload.doc.data()["orderaccepted"],
             };
           });
-          this.orders = this.orders.filter((item: any) => item.orderaccepted === 'pending')
+          this.orders = this.orders.filter((item: any) => item.orderaccepted === 'success')
           loader.dismiss();
         });
 
     } catch (e: any) {
       this.showToast(e);
     }
+
   }
 
   showToast(message: string) {

@@ -21,11 +21,14 @@
     </ion-card-header>
 
     <ion-card-content>
-      <form action="/action_page.php">
-        <label for="myfile">Select a file:</label>
-        <input type="file" id="myfile" name="myfile"><br><br>
-        <input type="submit">
+      <form (ngSubmit)="onSubmit()">
+        <ion-item>
+          <ion-label>Image</ion-label>
+          <input type="file" (change)="onFileSelected($event)">
+        </ion-item>
+        <ion-button type="submit" [disabled]="!selectedFile || isUploading">Upload and Place Order</ion-button>
       </form>
+      <ion-progress-bar *ngIf="isUploading" type="indeterminate"></ion-progress-bar>
     </ion-card-content>
   </ion-card>
 
