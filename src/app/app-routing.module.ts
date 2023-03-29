@@ -98,7 +98,11 @@ const routes: Routes = [
   {
     path: 'userorderdetails/:id',
     loadChildren: () => import('./userorderdetails/userorderdetails.module').then( m => m.UserorderdetailsPageModule)
+  },  {
+    path: 'usermanual',
+    loadChildren: () => import('./usermanual/usermanual.module').then( m => m.UsermanualPageModule)
   },
+
 
 
 ];

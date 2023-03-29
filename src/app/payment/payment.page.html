@@ -17,6 +17,18 @@
 
   <ion-card>
     <ion-card-header>
+      <ion-card-title>Bank Account Number</ion-card-title>
+    </ion-card-header>
+  
+    <ion-card-content>
+      <Strong>Name Of Acc Holder : </Strong>Anise<br><br>
+      <strong>Maybank</strong> - 0192846271<br>
+      <strong>Cimb Bank</strong> - 7645093311
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
       <ion-card-title>Attach your receipt here</ion-card-title>
     </ion-card-header>
 
@@ -26,7 +38,7 @@
           <ion-label>Image</ion-label>
           <input type="file" (change)="onFileSelected($event)">
         </ion-item>
-        <ion-button type="submit" [disabled]="!selectedFile || isUploading">Confirm booking</ion-button>
+        <ion-button color="medium" type="submit" [disabled]="!selectedFile || isUploading">Confirm booking</ion-button>
       </form>
       <ion-progress-bar *ngIf="isUploading" type="indeterminate"></ion-progress-bar>
     </ion-card-content>
